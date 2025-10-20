@@ -155,3 +155,71 @@ Projeto desenvolvido para a disciplina N2
 npm run coverage --> para ver o relatório, se quiser vizualizar um mais formal olha na pasta coverage e executa com live server os .html 
 npm run test --> para executar os testes e ver todos eles funcionarem 
 
+
+
+
+## Novas Funcionalidades (new_features)
+
+Este projeto foi estendido com novas funcionalidades para gerenciamento de produtos e serviços, utilizando um banco de dados SQLite e novos endpoints de API, com testes dedicados usando Chai-http.
+
+### Estrutura da Pasta `new_features`
+
+```
+petshop-project/
+├── new_features/          # Contém as novas funcionalidades
+│   ├── api.js           # Define os novos endpoints da API
+│   ├── database.js      # Configura e inicializa o banco de dados SQLite
+│   ├── server.js        # Inicia o servidor Express e integra a nova API
+│   └── api.test.js      # Testes de API para os novos endpoints usando Chai-http
+└── ... (restante do projeto)
+```
+
+### Banco de Dados SQLite
+
+Um banco de dados SQLite (`petshop.db`) é utilizado para persistir dados de produtos e serviços. Para fins de teste, um banco de dados em memória é empregado para garantir o isolamento e a limpeza entre as execuções dos testes.
+
+**Tabelas Criadas:**
+
+*   **`products`**: `id`, `name`, `price`, `stock`
+*   **`services`**: `id`, `name`, `description`, `price`
+
+### Endpoints da Nova API
+
+Os seguintes endpoints estão disponíveis sob a rota `/api`:
+
+*   **`POST /api/products`**
+    *   **Descrição**: Adiciona um novo produto.
+    *   **Corpo da Requisição**: `{ "name": "string", "price": "number", "stock": "number" }`
+    *   **Respostas**: `201 Created` (sucesso), `400 Bad Request` (dados inválidos), `500 Internal Server Error`
+
+*   **`GET /api/products`**
+    *   **Descrição**: Lista todos os produtos.
+    *   **Respostas**: `200 OK` com um array de produtos, `500 Internal Server Error`
+
+*   **`POST /api/services`**
+    *   **Descrição**: Adiciona um novo serviço.
+    *   **Corpo da Requisição**: `{ "name": "string", "description": "string (opcional)", "price": "number" }`
+    *   **Respostas**: `201 Created` (sucesso), `400 Bad Request` (dados inválidos), `500 Internal Server Error`
+
+*   **`GET /api/services`**
+    *   **Descrição**: Lista todos os serviços.
+    *   **Respostas**: `200 OK` com um array de serviços, `500 Internal Server Error`
+
+### Como Executar a Nova API
+
+1.  Certifique-se de estar no diretório raiz do projeto (`petshop_teste`).
+2.  Instale as dependências (se ainda não o fez): `npm install`
+3.  Inicie o servidor:
+    ```bash
+    node new_features/server.js
+    ```
+    O servidor estará a escutar em `http://localhost:3000`.
+
+### Como Executar os Novos Testes
+
+1.  Certifique-se de estar no diretório raiz do projeto (`petshop_teste`).
+2.  Execute o script de teste dedicado:
+    ```bash
+    npm run test:new_features
+    ```
+    Este comando executará os testes de API definidos em `new_features/api.test.js`.
