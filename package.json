@@ -1,0 +1,23 @@
+{
+  "name": "petshop-project",
+  "version": "1.0.0",
+  "description": "Projeto simples de gerenciamento de petshop desenvolvido em Node.js com testes unitários, de API e integração.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "test:vini": "mocha test/pets.test.js",
+    "coverage": "nyc npm test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.5.0",
+    "mocha": "^11.7.4",
+    "nyc": "^17.1.0",
+    "sinon": "^21.0.0"
+  }
+}
