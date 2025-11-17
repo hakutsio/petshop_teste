@@ -9,7 +9,8 @@
   "scripts": {
     "test": "mocha",
     "test:vini": "mocha test/pets.test.js",
-    "coverage": "nyc npm test"
+    "coverage": "nyc npm test",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +20,11 @@
     "mocha": "^11.7.4",
     "nyc": "^17.1.0",
     "sinon": "^21.0.0"
+  }
+  ,
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6"
   }
 }
