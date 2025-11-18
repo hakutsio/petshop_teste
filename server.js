@@ -62,10 +62,8 @@ function all(sql, params = []) {
 }
 
 
-// Serve frontend static files
 app.use('/', express.static(path.join(__dirname, 'frontend')));
 
-// Helpers to run queries with promises
 function run(sql, params = []) {
   return new Promise((resolve, reject) => {
     db.run(sql, params, function (err) {

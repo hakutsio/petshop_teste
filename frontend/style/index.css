@@ -1,0 +1,13 @@
+nav a {
+  display: block;
+  color: #c5c5d2;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 8px 0;
+  transition: 0.2s;
+}
+nav a:hover {
+  background: #2f2f45;
+  color: #fff;
+} 

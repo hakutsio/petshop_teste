@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../style/dashboard.css">
+<script src="../script/dashboard.js" defer></script>
+<title>Dashboard Clientes</title>
+
+<style>
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <h2>Dashboard</h2>
+
+    <nav>
+    <a href="index.html">Index</a>
+    <a href="agendamentos.html">Agendamentos</a>
+    <a href="clientes.html">Clientes</a>
+    <a href="pets.html">Pets</a>
+    <a href="dashboard.html">Dashboard</a>
+    </nav>
+
+</aside>
+
+<!-- CONTEÚDO -->
+<main class="content">
+
+  <h1>Lista de Clientes</h1>
+
+  <section class="cards">
+    <div class="card">
+      <h3>Total Clientes</h3>
+      <p id="totalClientes">...</p>
+    </div>
+  </section>
+
+  <!-- TABELA -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Telefone</th>
+      </tr>
+    </thead>
+    <tbody id="tabelaClientes">
+      <tr>
+        <td colspan="4" style="text-align:center;">Carregando...</td>
+      </tr>
+    </tbody>
+  </table>
+
+</main>
+</body>
+</html>

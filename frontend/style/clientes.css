@@ -1,0 +1,79 @@
+/* BASE */
+body {
+  font-family: "Segoe UI", sans-serif;
+  padding: 30px;
+  background: #f3f4f8;
+}
+
+/* FORMULÁRIO */
+form {
+  margin-bottom: 20px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+input,
+button {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+button {
+  cursor: pointer;
+  background: #1e1e2f;
+  color: #fff;
+  border: none;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #2f2f45;
+}
+
+/* TABELA */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+th,
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #f0f0f5;
+  font-weight: bold;
+  text-align: left;
+}
+
+tr:hover {
+  background: #f9f9f9;
+}
+
+nav a {
+  display: block;
+  color: #c5c5d2;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 8px 0;
+  transition: 0.2s;
+}
+nav a:hover {
+  background: #2f2f45;
+  color: #fff;
+} 
