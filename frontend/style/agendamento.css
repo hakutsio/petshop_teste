@@ -1,11 +1,9 @@
-/* BASE */
 body {
   font-family: "Segoe UI", sans-serif;
   padding: 30px;
   background: #f3f4f8;
 }
 
-/* FORMULÁRIO */
 form {
   margin-bottom: 20px;
   background: #fff;
@@ -65,9 +63,17 @@ table tr:hover {
   background: #f9f9f9;
 }
 
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  font-size: x-large;
+}
+
 nav a {
   display: block;
-  color: #c5c5d2;
+  color: #000000;
   text-decoration: none;
   padding: 10px;
   border-radius: 8px;

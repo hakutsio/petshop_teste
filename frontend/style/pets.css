@@ -64,6 +64,15 @@ th {
 tr:hover {
   background: #f9f9f9;
 }
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  font-size: x-large;
+}
+
 nav a {
   display: block;
   color: #c5c5d2;

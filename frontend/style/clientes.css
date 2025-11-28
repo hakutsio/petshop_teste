@@ -7,6 +7,7 @@ body {
 
 /* FORMULÁRIO */
 form {
+  margin-top: 20px;
   margin-bottom: 20px;
   background: #fff;
   padding: 20px;
@@ -62,6 +63,14 @@ th {
 
 tr:hover {
   background: #f9f9f9;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  font-size: x-large;
 }
 
 nav a {
