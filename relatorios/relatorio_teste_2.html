@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Performance - Petshop API</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        h2 {
+            color: #495057;
+            margin-top: 30px;
+            border-left: 5px solid #ffc107;
+            padding-left: 10px;
+        }
+        .summary-box {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .metric-card {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            width: 30%;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .metric-card h3 {
+            margin: 0 0 5px 0;
+            color: #007bff;
+            font-size: 1.2em;
+        }
+        .metric-card p {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            font-weight: 700;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 5px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .code-block {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .pass { color: green; font-weight: bold; }
+        .fail { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Relatório de Performance da API Petshop</h1>
+    
+    <h2>1. 💻 Resumo do Backend (Express/SQLite)</h2>
+    <p>O sistema é construído utilizando **Node.js com Express** para o servidor, e **SQLite** para persistência de dados. A API gerencia três entidades principais:</p>
+    <ul>
+        <li>**Clientes:** Rotas para listar, criar, buscar e gerenciar informações dos clientes.</li>
+        <li>**Pets:** Rotas para listar, criar, buscar e gerenciar informações dos animais de estimação.</li>
+        <li>**Agendamentos:** Rotas para listar, criar, buscar e gerenciar agendamentos de serviços.</li>
+    </ul>
+    <p>O teste de performance focou exclusivamente nas rotas de leitura (GET) mais críticas, que acessam a base de dados.</p>
+
+    <h2>2. 🎯 Cenário e Configuração do Teste (Artillery)</h2>
+    <div class="code-block">
+        <strong>Fase de Carga:</strong> 40 segundos de duração.<br>
+        <strong>Usuários Virtuais (VUs):</strong> 50 usuários simultâneos.<br>
+        <strong>Taxa de Chegada:</strong> 5 VUs/segundo (Ramp up até 50).<br>
+        <strong>Fluxo do Usuário:</strong> O usuário alterna entre a listagem de Clientes e a listagem de Pets.<br>
+        <strong>Endpoints Testados:</strong> <code>GET /api/clientes</code> e <code>GET /api/pets</code>.
+    </div>
+
+    <h2>3. 📊 Resultados Chave e Conclusão</h2>
+
+    <div class="summary-box">
+        <div class="metric-card">
+            <h3>Total de Requisições</h3>
+            <p>1.750</p>
+        </div>
+        <div class="metric-card">
+            <h3>Taxa de Falhas</h3>
+            <p><span class="success">0%</span></p>
+        </div>
+        <div class="metric-card">
+            <h3>Tempo Médio (Latency)</h3>
+            <p>1 ms</p>
+        </div>
+    </div>
+
+    <h3>Conclusão: <span class="success">Performance Excelente e Estável</span></h3>
+    <p>O sistema demonstrou **alta performance e estabilidade** sob a carga de 50 usuários simultâneos. **Todos os 1.750 requests** foram concluídos com sucesso (Taxa de Falha 0%). O tempo de resposta foi extremamente baixo, garantindo uma ótima experiência ao usuário.</p>
+
+    <h2>4. ⏱️ Latência (Tempo de Resposta Global)</h2>
+    <p>O objetivo (SLA) de performance era que 99% das requisições respondessem em menos de 500 ms. O resultado superou amplamente essa meta.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Métrica</th>
+                <th>Valor (ms)</th>
+                <th>Status (Meta 500 ms)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>**Tempo Médio (mean)**</td>
+                <td>1</td>
+                <td class="pass">Sucesso</td>
+            </tr>
+            <tr>
+                <td>**P95** (95% mais rápidos)</td>
+                <td>2</td>
+                <td class="pass">Sucesso</td>
+            </tr>
+            <tr>
+                <td>**P99** (99% mais rápidos)</td>
+                <td>2</td>
+                <td class="pass">Sucesso</td>
+            </tr>
+            <tr>
+                <td>Tempo Máximo (max)</td>
+                <td>19</td>
+                <td class="pass">Sucesso</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>5. 📑 Detalhes por Endpoint</h2>
+    <p>Análise da performance individual das rotas de listagem:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Endpoint</th>
+                <th>Total de Requisições</th>
+                <th>Tempo Médio (ms)</th>
+                <th>P95 (ms)</th>
+                <th>P99 (ms)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>/api/clientes</code></td>
+                <td>875</td>
+                <td>0.9</td>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td><code>/api/pets</code></td>
+                <td>875</td>
+                <td>1</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

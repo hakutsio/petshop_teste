@@ -1,13 +1,135 @@
-nav a {
-  display: block;
-  color: #c5c5d2;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 8px;
-  margin: 8px 0;
-  transition: 0.2s;
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
 }
-nav a:hover {
-  background: #2f2f45;
-  color: #fff;
-} 
+
+header {
+    background-color: #5a5a9e; /* Azul Escuro do Pet Shop */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    margin-top: 5px;
+    font-size: 1.1em;
+}
+
+/* Navegação */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #7d7db3; /* Azul Claro/Púrpura */
+    padding: 10px 0;
+    border-bottom: 2px solid #5a5a9e;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
+}
+
+nav a:hover, nav a.active {
+    background-color: #ff9900; /* Laranja para destaque */
+    color: #333;
+}
+
+/* Conteúdo Principal e Cards */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.info-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; /* Limite de largura para cada card */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Assegura que imagem e conteúdo fiquem em coluna */
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-image-container {
+    height: 250px; /* Altura fixa para o container da imagem */
+    overflow: hidden; /* Garante que a imagem não transborde */
+    display: flex; /* Para centralizar a imagem se ela for menor */
+    justify-content: center;
+    align-items: center;
+}
+
+.card-image-container img {
+    width: 100%; /* A imagem vai ocupar 100% da largura do container */
+    height: 100%; /* A imagem vai ocupar 100% da altura do container */
+    object-fit: cover; /* ESSENCIAL: Isso fará a imagem cobrir o container sem distorcer, cortando o que for necessário */
+    display: block; /* Remove espaços extras abaixo da imagem */
+}
+
+.card-content {
+    padding: 20px;
+    /* Adicione um background para o texto se a imagem estiver por cima */
+    background-color: white; 
+    position: relative; /* Para garantir que o z-index funcione se precisar */
+    z-index: 1; /* Para garantir que o texto fique acima da imagem se houver sobreposição */
+}
+
+.card-content h2 {
+    color: #5a5a9e;
+    margin-top: 0;
+    font-size: 1.8em;
+}
+
+.card-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.card-content ul li {
+    margin-bottom: 5px;
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    .card {
+        max-width: 100%;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    nav a {
+        margin: 5px 10px;
+        text-align: center;
+    }
+}

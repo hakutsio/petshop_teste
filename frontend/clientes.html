@@ -10,11 +10,11 @@
 </head>
 <body>
     <button onclick="location.href='index.html'" style="margin-bottom:12px;padding:8px 16px;">Voltar</button>
-    <h1>Gerenciar Agendamentos</h1>
+    <h1>Gerenciar Clientes</h1>
     <nav>
     <a href="index.html">Index</a>
     <a href="agendamentos.html">Agendamentos</a>
-    <a href="clientes.html">Clientes</a>
+    <a href="clientes.html" class="active">Clientes</a>
     <a href="pets.html">Pets</a>
     <a href="dashboard.html">Dashboard</a>
     </nav>
@@ -38,7 +38,7 @@
       <div>
         <label>Telefone<br /><input id="telefone" /></label>
       </div>
-      <div>
+      <div id="bt-save_clear">
         <button type="submit">Salvar</button>
         <button type="button" id="clearBtn">Limpar</button>
       </div>

@@ -1,17 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="../style/index.css"> 
+  
+  <title>Pet Shop - Home</title>
 </head>
 <body>
- <nav>
-    <a href="index.html">Index</a>
+  <header>
+    <h1>🐾 Pet Shop Pro 🐾</h1>
+    <p>Seu sistema de gerenciamento de pet shop e agendamentos.</p>
+  </header>
+
+  <nav>
+    <a href="index.html" class="active">Início</a>
     <a href="agendamentos.html">Agendamentos</a>
     <a href="clientes.html">Clientes</a>
     <a href="pets.html">Pets</a>
     <a href="dashboard.html">Dashboard</a>
-</nav>
+  </nav>
+
+  <main>
+    <section class="info-cards">
+      <div class="card">
+        <div class="card-image-container">       
+            <img src="./assets/lulu.avif" alt="Imagem de lulu da pomeranea">
+        </div>
+        <div class="card-content">
+          <h2>⭐ Lulu da Pomerânia</h2>
+          <p>Raça conhecida por sua pelagem fofa e personalidade extrovertida. Apesar do tamanho pequeno, são cães corajosos e muito apegados aos donos.</p>
+          <ul>
+            <li>**Curiosidade:** São descendentes de cães de trenó da Islândia e Lapônia.</li>
+            <li>**Cuidados:** Requer escovação diária devido à densidade da pelagem.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-image-container">
+            <img src="./assets/pitbull.jpg" alt="Imagem de pitbull">
+        </div>
+        <div class="card-content">
+          <h2>💪 Pitbull</h2>
+          <p>O American Pit Bull Terrier é um cão forte, atlético e, quando bem socializado e treinado, extremamente leal e carinhoso com a família.</p>
+          <ul>
+            <li>**Curiosidade:** O termo "Pitbull" é um nome genérico para várias raças de cães com características semelhantes.</li>
+            <li>**Mito:** São frequentemente vítimas de má reputação, mas são gentis por natureza.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>

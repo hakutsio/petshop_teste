@@ -1,0 +1,25 @@
+config:
+  target: "http://localhost:3000"
+  
+  plugins:
+    metrics-by-endpoint: {}
+
+  phases:
+    - 
+      duration: 30
+      arrivalRate: 20
+      name: "Carga Constante - Listar Clientes"
+      
+  ensure:
+    http.codes.4xx: 0
+    p99: 500
+  
+scenarios:
+  - 
+    name: "Acessar Endpoint /api/clientes"
+    flow:
+      - 
+        get:
+          url: "/api/clientes"
+          expect:
+            - statusCode: 200

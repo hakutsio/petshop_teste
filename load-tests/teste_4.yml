@@ -1,0 +1,41 @@
+config:
+  target: "http://localhost:3000"
+
+  plugins:
+    metrics-by-endpoint: {}
+
+  phases:
+    - 
+      duration: 15
+      arrivalRate: 20
+      rampTo: 300
+      name: "Ramp-up (Aquecimento Máximo)"
+    - 
+      duration: 30
+      arrivalRate: 30
+      name: "Estresse Máximo - 300 VUs com Escrita (POST)"
+      
+  ensure:
+    http.codes.4xx: 0 
+    http.codes.5xx: 5 
+    p99: 1000 
+    
+scenarios:
+  - 
+    name: "Cenario POST Stress 300 VUs - Novo Agendamento"
+    flow:
+      - 
+        post:
+          url: "/api/agendamentos"
+          json: 
+            data: "2025-12-16" 
+            hora: "10:00"    
+            servico: "Banho e Tosa Simples" 
+            idCliente: 1      
+            idPet: 1          
+            observacoes: "Teste de estresse de escrita."
+          expect:
+            - statusCode: 201 
+
+      - 
+        think: 1 

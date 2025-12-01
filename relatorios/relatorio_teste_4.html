@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Performance - Teste 4: Estresse Máximo (POST)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #198754; /* Verde para indicar Sucesso Funcional */
+            border-bottom: 3px solid #198754;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        h2 {
+            color: #495057;
+            margin-top: 30px;
+            border-left: 5px solid #ffc107;
+            padding-left: 10px;
+        }
+        .summary-box {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .metric-card {
+            background-color: #d1e7dd; /* Fundo verde claro para Sucesso */
+            padding: 15px;
+            border-radius: 8px;
+            width: 30%;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .metric-card h3 {
+            margin: 0 0 5px 0;
+            color: #0f5132;
+            font-size: 1.2em;
+        }
+        .metric-card p {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #198754;
+            color: white;
+            font-weight: 700;
+        }
+        .performance-ok {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 5px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .performance-warning {
+            background-color: #fff3cd;
+            color: #664d03;
+            padding: 5px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .functional-success {
+            background-color: #d1e7dd;
+            color: #0f5132;
+            padding: 15px;
+            border: 2px solid #198754;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .pass { color: green; font-weight: bold; }
+        .warning { color: orange; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Relatório Final: Estresse de Escrita (300 VUs POST)</h1>
+    
+    <h2>1. 🎯 Cenário e Configuração</h2>
+    <p>Este teste foi a **reexecução** do Estresse Máximo, focando na **operação de escrita (`POST`)** para o banco de dados (SQLite) sob altíssima concorrência. O JSON de requisição foi corrigido.</p>
+    <div class="code-block">
+        <strong>Fase de Carga:</strong> 45 segundos de duração (15s Ramp-up + 30s Carga Constante).<br>
+        <strong>Usuários Virtuais (VUs):</strong> 300 usuários simultâneos.<br>
+        <strong>Endpoint Testado:</strong> <code>POST /api/agendamentos</code> (Criação de Agendamentos).<br>
+        <strong>Objetivo (SLA) de Latência:</strong> P99 em menos de 1000 ms (1 segundo).
+    </div>
+
+    <h2>2. 📊 Resultados Chave e Conclusão</h2>
+
+    <div class="summary-box">
+        <div class="metric-card">
+            <h3>Total de Requisições</h3>
+            <p>2.988</p>
+        </div>
+        <div class="metric-card">
+            <h3>Requisições Sucedidas (201)</h3>
+            <p><span class="performance-ok">100%</span></p>
+        </div>
+        <div class="metric-card">
+            <h3>Taxa de Transferência (RPS)</h3>
+            <p>67/s</p>
+        </div>
+    </div>
+
+    <div class="functional-success">
+        <h3>✅ SUCESSO FUNCIONAL E BOA PERFORMANCE!</h3>
+        <p>Após a correção do payload, o teste de estresse de escrita foi concluído com **100% de sucesso**. O sistema criou **2.988 agendamentos** em 45 segundos, provando que ele é funcionalmente robusto mesmo sob estresse.</p>
+        <p>A latência (tempo de resposta) se manteve em um nível excelente para uma operação de escrita em SQLite, com um P99 de **40.9 ms**.</p>
+    </div>
+
+    <h2>3. ⏱️ Latência (Tempo de Resposta Global)</h2>
+    <p>Apesar da operação ser de escrita, que naturalmente exige mais do que a leitura (GET), o tempo de resposta se manteve baixo e bem dentro do SLA de 1000 ms.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Métrica</th>
+                <th>Valor (ms)</th>
+                <th>Status (Meta 1000 ms)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>**Tempo Médio (mean)**</td>
+                <td>13.6</td>
+                <td class="performance-ok">Sucesso</td>
+            </tr>
+            <tr>
+                <td>**P95** (95% mais rápidos)</td>
+                <td>34.1</td>
+                <td class="performance-ok">Sucesso</td>
+            </tr>
+            <tr>
+                <td>**P99** (99% mais rápidos)</td>
+                <td>**40.9**</td>
+                <td class="performance-ok">Sucesso</td>
+            </tr>
+            <tr>
+                <td>Tempo Máximo (max)</td>
+                <td>53</td>
+                <td class="performance-ok">Sucesso</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>4. 📝 Análise da Concorrência (SQLite)</h2>
+    <p>O SQLite é conhecido por ter limitações de concorrência em operações de escrita (POST). No entanto, sua implementação lidou com a carga:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Endpoint</th>
+                <th>Requisições Sucedidas (201)</th>
+                <th>Tempo Médio (ms)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>POST /api/agendamentos</code></td>
+                <td>2.988</td>
+                <td>13.6</td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="margin-top: 15px;">**Conclusão Final:** Todos os testes de carga, desde o cenário leve (50 VUs GET) até o estresse máximo de escrita (300 VUs POST), demonstram que sua API Node.js é **rápida e resiliente** para os cenários testados, operando com latências baixas e zero erros de concorrência/servidor.</p>
+
+</div>
+
+</body>
+</html>

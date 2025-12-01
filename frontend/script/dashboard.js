@@ -1,12 +1,10 @@
  async function carregarClientes() {
     try {
-      const res = await fetch("http://localhost:3000/api/clientes"); // Muda para tua API
+      const res = await fetch("http://localhost:3000/api/clientes"); 
       const dados = await res.json();
 
-      // Preenche card
       document.getElementById("totalClientes").textContent = dados.length;
 
-      // Preenche tabela
       const tbody = document.getElementById("tabelaClientes");
       tbody.innerHTML = "";
 

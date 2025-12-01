@@ -13,6 +13,7 @@ form {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  align-items: center;
 }
 
 input,
@@ -36,7 +37,6 @@ button:hover {
   background: #2f2f45;
 }
 
-/* TABELA */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -72,15 +72,23 @@ nav {
 }
 
 nav a {
-  display: block;
-  color: #000000;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 8px;
-  margin: 8px 0;
-  transition: 0.2s;
+ display: block;
+ color: #000000;
+ text-decoration: none;
+ padding: 10px;
+ border-radius: 8px;
+ margin: 8px 0;
+ transition: 0.2s;
 }
-nav a:hover {
-  background: #2f2f45;
-  color: #fff;
-} 
+
+nav a:hover,
+nav a.active {
+ background: #ff9900; 
+ color: #333;
+}
+
+#bt-save_clear{
+    display: flex;
+    gap: 4px;
+    margin-top: 22px;
+}

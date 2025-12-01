@@ -1,0 +1,37 @@
+config:
+  target: "http://localhost:3000"
+
+  plugins:
+    metrics-by-endpoint: {}
+
+  phases:
+    - 
+      duration: 10
+      arrivalRate: 5
+      name: "Ramp-up (Aquecimento)"
+    - 
+      duration: 30
+      arrivalRate: 5 
+      rampTo: 50
+      name: "Carga Constante - 50 VUs com 2 Endpoints"
+      
+  ensure:
+    http.codes.4xx: 0
+    p99: 500
+    
+scenarios:
+  - 
+    name: "Cenario 50 VUs - Listar Clientes e Pets"
+    flow:
+      - 
+        get:
+          url: "/api/clientes"
+          expect:
+            - statusCode: 200
+      - 
+        think: 0.1 
+      -
+        get:
+          url: "/api/pets"
+          expect:
+            - statusCode: 200

@@ -1,0 +1,44 @@
+config:
+  target: "http://localhost:3000"
+
+  plugins:
+    metrics-by-endpoint: {}
+
+  phases:
+    - 
+      duration: 10
+      arrivalRate: 10
+      rampTo: 100
+      name: "Ramp-up (Aquecimento)"
+    - 
+      duration: 30
+      arrivalRate: 10
+      name: "Teste de Estresse - 100 VUs com 3 Endpoints"
+      
+  ensure:
+    http.codes.4xx: 0.5 
+    p99: 500
+    
+scenarios:
+  - 
+    name: "Cenario Stress 100 VUs - Listar 3 Recursos"
+    flow:
+      - 
+        get:
+          url: "/api/clientes"
+          expect:
+            - statusCode: 200
+      - 
+        think: 0.1 
+      -
+        get:
+          url: "/api/pets"
+          expect:
+            - statusCode: 200
+      - 
+        think: 0.1 
+      -
+        get:
+          url: "/api/agendamentos"
+          expect:
+            - statusCode: 200
